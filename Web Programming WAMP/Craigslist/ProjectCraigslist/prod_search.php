@@ -1,0 +1,66 @@
+<?php
+
+//user, password, and database variables 
+$db_user = "root"; 
+$db_password = '';     
+$db_dbname = 'craigslist'; 
+$db_server='localhost';
+
+
+//connect to the database server 
+$db = new mysqli($db_server, $db_user, $db_password, $db_dbname); 
+if (!$db) { 
+   die('Could Not Connect: ' . mysql_error()); 
+} 
+
+//select database name 
+//mysql_select_db($db_dbname) or die (mysql_error());
+$src_name=$_GET['src_name']; 
+//$src_name=mysql_real_escape_string($src_name);
+
+
+  //run a select query 
+  $select_query = "select price,img_desc,title,prod_id,prod_desc,email,phone,name from product where (title like '%$src_name%' or prod_desc like '%$src_name%') and sold_flag='N';"; 
+  $result = $db->query($select_query); 
+   
+  $num_rows = mysqli_num_rows($result);
+  
+   echo'<div class="panel-heading panel-heading-green">';
+	echo'<h3 class="panel-title"> <b>Search Matches:  </b></h3>';
+	echo'</div>';
+	echo '<br/><br/>';
+	if( $src_name == "")
+	{
+	echo '<h3> No match found. Please provide the search text </h3>';
+	}
+	else
+	{
+	if ($num_rows == 0)
+	  echo '<h3> No matches found </h3>';
+	  else
+	  {
+while($row = $result->fetch_assoc()) 
+  { 	
+		$img_name=$row['img_desc'];
+		$prod_id=$row['prod_id'];
+		$price= $row['price'];
+		$title=$row['title'];
+		$desc=$row['prod_desc'];
+		echo '<div class="col-md-4 game">';
+		echo '<div class="game-price">$'.$price.'</div>';
+		echo '<a href="product.php?price='.$price.'&title='.$title.'&img_name='.$img_name.'.jpg'.'&prod_id='.$prod_id.'&desc='.$desc.'">';
+		echo '<img  src="images/'.$img_name.'.jpg" width="175" height="200"/>';
+		echo '</a>';
+		echo '<div class="game-title">';
+		echo $title;
+		echo '</div>';
+		echo '<div class="game-add">';
+		//echo '<a class="btn btn-primary" onclick="cart('.$prod_id.')">Add To Cart</a>';
+		echo '<br>';
+		echo'</div>';
+		echo'</div>';
+		}	
+  }
+  }  
+$db->close();
+?>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Craigs List</title>
+		<link href="css/main.css" rel="stylesheet">
+		<link href="css/custom.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+		<link rel="icon" href="images/logo.jpg" type="image/gif">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="sellProduct.js" language="javascript" type="text/javascript" ></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+			<a class="navbar-brand" href="index2.html">Criags List</a>
+        </div>
+        <!--<div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+				<li class="active"><a href="index2.html">Home</a></li>
+				<li><a href="sellProduct.html">Sell Product</a></li>
+				<li><a href="cart.html">Go To Cart</a></li>
+				<li><a href="log_status.php">Logout</a></li>
+			</ul>
+		</div><!--/.nav-collapse -->
+	  </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+		
+			<div class="col-md-4">
+				<div class="panel panel-default panel-list">
+					<div class="panel-heading panel-heading-dark">
+						<h3 class="panel-title">Menu Options</h3>
+					</div>
+					<!-- List group -->
+					<ul class="list-group">
+						<li class="list-group-item"><a href="index2.html">Home</a></li>	
+						<li class="list-group-item"><a href="sellProduct.html">Sell Product</a></li>
+						<li class="list-group-item"><a href="cart.html">Go To Cart</a></li>
+						<li class="list-group-item"><a href="log_status.php">Logout</a></li>
+					</ul>
+				</div>			
+			</div>
+			
+			<div class="col-md-8">
+				<div class="panel panel-default">
+					<div class="panel-heading panel-heading-green">
+						<h3 class="panel-title">Craigs List</h3>
+					</div>
+					<div class="panel-body">
+						<form id='regForm' action="sellProduct.php"method="post" enctype="multipart/form-data">
+						<!--<form id='regForm' action="sellProduct.php" method="post">-->
+							<div class="form-group">
+							<label>Product Title</label><span class="error">* <?php echo $titleErr;?></span>
+							<input type="text" name="p_title" class="form-control" placeholder="Enter product title">
+							</div>
+							<div class="form-group">
+							<label>Product Cost</label><span class="error">* <?php echo $priceErr;?></span>
+							<input type="text" name="p_cost" class="form-control"  placeholder="Enter product cost">
+							</div>
+							<div class="form-group">
+							<label>Product Details</label><span class="error">* <?php echo $descErr;?></span>
+							<input type="text" name="p_details" class="form-control"  placeholder="Enter product details">
+							</div>
+							<div class="form-group">
+							<label>Category</label><span class="error">*</span>
+							<select name="p_category">
+							  <option value="8">Automobiles</option>
+							  <option value="9">Electronics</option>
+							  <option value="10">Furniture</option>
+							  <option value="11">Home Appliances</option>
+							  <option value="12" selected>Miscellaneous</option>
+							</select>
+							</div>
+							<div class="form-group">
+								<label>Image</label><span class="error">* <?php echo $imgErr;?></span>
+								<!--<input type="text" name="p_image" class="form-control" placeholder="Paste the Image Location">-->
+								<input type="file" name="p_image" id="p_image">
+							</div>
+							<div class="form-group">
+							<label>Owner Name</label><span class="error">* <?php echo $nameErr;?></span>
+							<input type="text" name="p_owner" class="form-control" placeholder="Enter seller name">
+							</div>
+							<div class="form-group">
+							<label>Owner Phone</label><span class="error">* <?php echo $phoneErr;?></span>
+							<input type="text" name="p_phone" class="form-control" placeholder="Enter seller phone" maxlength="10">
+							</div>
+							<div class="form-group">
+							<label>Owner email</label><span class="error">* <?php echo $emailErr;?></span>
+							<input type="text" name="p_email" class="form-control" placeholder="Enter seller email">
+							</div>
+							<input type="submit"  name="sellp" value="Sell Product" class="btn btn-primary" /><span class="error"><?php echo $commonErr;?></span>
+						</form>	<br/><br/>					
+					</div>
+				</div>
+			</div><!--col-md-8-->
+		</div><!-- /.row -->
+    </div><!-- /.container -->
+	
+	<span id="res"></span>
+	<div class="row footer">
+		<div class="container">
+			<p>Craigs List &copy; 2015, All Rights Reserved</p>
+		</div>
+	</div>
+
+   
+  </body>
+</html>
