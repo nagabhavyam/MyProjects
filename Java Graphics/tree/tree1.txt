@@ -1,0 +1,15 @@
+"XY"     			// Axiom
+"F"     			// strF
+""					// strf
+"[PT[L-XY][R+XY]-XY]" 		// strX
+"[++F---FF][--F+++FF]"  				// strY
+5		      // Parent angle of rotation
+40			//Left
+30			//Right
+90        // Initial direction of turtle (east)
+0.5      // Start at x = 0.5 * width
+0.02      // Start at y = 0.5 * height
+0.5     // Initial line length is 0.3 * height
+0.6	      // Reduction factor Parent
+0.4		  // Left
+0.3		  // Right
